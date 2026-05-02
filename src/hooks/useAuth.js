@@ -1,5 +1,5 @@
 // src/hooks/useAuth.js
-// ─── Email/Password Authentication ───────────────────────
+// ─── Email/Password + Google Authentication ───────────────
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabase";
 import { toast } from "../lib/notifications";
@@ -29,12 +29,12 @@ export function useAuth(role = "customer") {
   async function hydrateUser(session, role) {
     try {
       const { getOrCreateUser, getOrCreateRider } = await import("../lib/supabase");
-      const phone = session.user.phone || session.user.email;
+      const identifier = session.user.email || session.user.phone;
       let profile;
       if (role === "rider") {
-        profile = await getOrCreateRider(session.user.id, phone);
+        profile = await getOrCreateRider(session.user.id, identifier);
       } else {
-        profile = await getOrCreateUser(session.user.id, phone);
+        profile = await getOrCreateUser(session.user.id, identifier);
       }
       setUser({ ...session.user, ...profile });
     } catch (e) {
@@ -48,9 +48,7 @@ export function useAuth(role = "customer") {
     setSubmitting(true);
     setError(null);
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email, password
-      });
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
       toast("Welcome back!", "success");
     } catch (e) {
@@ -71,11 +69,29 @@ export function useAuth(role = "customer") {
         options: { data: { name } }
       });
       if (error) throw error;
-      toast("Account created! Welcome to KanoExpress 🎉", "success");
+      toast("Account created! Check your email to confirm 🎉", "success");
     } catch (e) {
       setError(e.message || "Sign up failed. Try again.");
       toast("Sign up failed", "error");
     } finally {
+      setSubmitting(false);
+    }
+  }
+
+  async function signInWithGoogle() {
+    setSubmitting(true);
+    setError(null);
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+          redirectTo: window.location.origin,
+        },
+      });
+      if (error) throw error;
+    } catch (e) {
+      setError(e.message || "Google sign-in failed. Try again.");
+      toast("Google sign-in failed", "error");
       setSubmitting(false);
     }
   }
@@ -88,6 +104,6 @@ export function useAuth(role = "customer") {
   return {
     user, loading, submitting, error,
     isSignUp, setIsSignUp,
-    signIn, signUp, logout,
+    signIn, signUp, signInWithGoogle, logout,
   };
 }
