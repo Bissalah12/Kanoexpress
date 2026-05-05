@@ -237,6 +237,8 @@ export default function CustomerApp() {
       const { distanceBetween, calculateDeliveryFee } = await import("../lib/paystack");
       const dist = distanceBetween(...p,...d);
       setDeliveryQuote({ dist:dist.toFixed(1), price:calculateDeliveryFee(dist), pickupCoord:p, dropoffCoord:d });
+    } catch(e) {
+      toast(e.message || "Failed to calculate delivery fee", "error");
     } finally { setQuotingDelivery(false); }
   }
 

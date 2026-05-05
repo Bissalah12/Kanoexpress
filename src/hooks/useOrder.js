@@ -137,9 +137,13 @@ export function useRiderOrder(rider) {
   }, [rider?.id]);
 
   async function fetchPendingOrders() {
-    const { getRiderPendingOrders } = await import("../lib/supabase");
-    const data = await getRiderPendingOrders(rider.id);
-    setPendingOrders(data);
+    try {
+      const { getRiderPendingOrders } = await import("../lib/supabase");
+      const data = await getRiderPendingOrders(rider.id);
+      setPendingOrders(data);
+    } catch {
+      toast("Could not load pending orders", "error");
+    }
   }
 
   async function accept(order) {

@@ -91,21 +91,30 @@ export function useWallet(userId) {
   }, [userId]);
 
   async function fetchBalance() {
-    const { getWalletBalance } = await import("../lib/supabase");
-    const bal = await getWalletBalance(userId);
-    setBalance(bal);
-    setLoading(false);
+    try {
+      const { getWalletBalance } = await import("../lib/supabase");
+      const bal = await getWalletBalance(userId);
+      setBalance(bal);
+    } catch {
+      toast("Could not load wallet balance", "error");
+    } finally {
+      setLoading(false);
+    }
   }
 
   async function fetchTransactions() {
-    const { supabase } = await import("../lib/supabase");
-    const { data } = await supabase
-      .from("transactions")
-      .select("*")
-      .eq("user_id", userId)
-      .order("created_at", { ascending: false })
-      .limit(10);
-    setTransactions(data || []);
+    try {
+      const { supabase } = await import("../lib/supabase");
+      const { data } = await supabase
+        .from("transactions")
+        .select("*")
+        .eq("user_id", userId)
+        .order("created_at", { ascending: false })
+        .limit(10);
+      setTransactions(data || []);
+    } catch {
+      toast("Could not load transactions", "error");
+    }
   }
 
   return { balance, transactions, loading, refetch: fetchBalance };
