@@ -9,9 +9,9 @@ import { FullScreenLoader, Spinner } from "../components/NetworkGuard";
 import MapView from "../components/MapView";
 
 const C = {
-  bg:"#0A0A0F",surface:"#13131A",card:"#1C1C26",border:"#2A2A38",
-  accent:"#FF5C1A",green:"#22C55E",yellow:"#FBBF24",red:"#EF4444",
-  blue:"#3B82F6",text:"#F0F0F5",textMid:"#9898AA",textDim:"#55556A",white:"#FFFFFF",
+  bg:"#070710",surface:"#0E0E1E",card:"#14152C",border:"#1F2048",
+  accent:"#10B97A",green:"#22D06A",yellow:"#F5B731",red:"#E84040",
+  blue:"#6096F5",text:"#EDEEF8",textMid:"#8484B0",textDim:"#474768",white:"#FFFFFF",
 };
 const S = {
   screen:{ minHeight:"100vh",background:C.bg,color:C.text,fontFamily:"'Plus Jakarta Sans','Segoe UI',sans-serif" },
@@ -41,7 +41,7 @@ function RiderAuthScreen({ auth }) {
 
   return (
     <div style={{ ...S.screen, padding:"0" }}>
-      <div style={{ background:`linear-gradient(160deg, #0A0A0F 60%, #001a0a)`, padding:"50px 24px 32px", textAlign:"center" }}>
+      <div style={{ background:`linear-gradient(160deg, #070710 55%, #011A0D)`, padding:"50px 24px 32px", textAlign:"center" }}>
         <span style={{ fontSize:48 }}>🏍</span>
         <h1 style={{ fontSize:28,fontWeight:900,margin:"8px 0 4px" }}>Rider Portal</h1>
         <p style={{ color:C.textMid,fontSize:14,margin:0 }}>KanoExpress Delivery Network</p>
@@ -233,7 +233,7 @@ export default function RiderApp() {
         )}
 
         {showIncoming&&(
-          <div style={{ position:"fixed",bottom:70,left:"50%",transform:"translateX(-50%)",width:"calc(100% - 40px)",maxWidth:390,background:C.card,borderRadius:20,border:`2px solid ${C.accent}`,padding:20,zIndex:200,boxShadow:`0 0 40px ${C.accent}44` }}>
+          <div style={{ position:"fixed",bottom:70,left:"50%",transform:"translateX(-50%)",width:"calc(100% - 40px)",maxWidth:390,background:C.card,borderRadius:20,border:`2px solid ${C.accent}`,padding:20,zIndex:200,boxShadow:`0 0 16px ${C.accent}28` }}>
             <div style={{ display:"flex",justifyContent:"space-between",marginBottom:12 }}>
               <span style={{ fontWeight:800,fontSize:16 }}>🔔 New Delivery Request</span>
               <div style={{ background:C.accent,borderRadius:"50%",width:32,height:32,display:"flex",alignItems:"center",justifyContent:"center",fontWeight:700,color:"#fff",fontSize:13 }}>{requestTimer}</div>
@@ -302,7 +302,7 @@ export default function RiderApp() {
     earnings:(
       <div style={{ padding:"0 20px" }}>
         <div style={{ padding:"20px 0 16px" }}><h2 style={{ margin:0,fontSize:18,fontWeight:800 }}>Earnings</h2></div>
-        <div style={{ ...S.card,background:`linear-gradient(135deg, ${C.accent} 0%, #ff8c42 100%)`,border:"none",marginBottom:16 }}>
+        <div style={{ ...S.card,background:`linear-gradient(135deg, ${C.accent} 0%, #2DDDAA 100%)`,border:"none",marginBottom:16 }}>
           <p style={{ margin:"0 0 6px",fontSize:13,opacity:0.8 }}>Today's Earnings</p>
           <p style={{ margin:"0 0 4px",fontSize:36,fontWeight:900 }}>₦{todayEarnings.toLocaleString()}</p>
           <p style={{ margin:0,opacity:0.8,fontSize:13 }}>{earnings.filter(e=>new Date(e.created_at).toDateString()===new Date().toDateString()).length} deliveries completed</p>

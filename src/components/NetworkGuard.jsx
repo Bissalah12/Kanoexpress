@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 import { onToast } from "../lib/notifications";
 
 const C = {
-  bg: "#0A0A0F", card: "#1C1C26", border: "#2A2A38",
-  accent: "#FF5C1A", green: "#22C55E", red: "#EF4444",
-  yellow: "#FBBF24", text: "#F0F0F5", textMid: "#9898AA",
+  bg: "#070710", card: "#14152C", border: "#1F2048",
+  accent: "#F97316", green: "#22D06A", red: "#E84040",
+  yellow: "#F5B731", text: "#EDEEF8", textMid: "#8484B0",
 };
 
 // ─── OFFLINE BANNER ───────────────────────────────────────

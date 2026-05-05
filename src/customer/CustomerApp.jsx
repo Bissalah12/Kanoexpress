@@ -10,9 +10,9 @@ import { FullScreenLoader, Spinner, RetryButton } from "../components/NetworkGua
 import MapView, { geocodeAddress } from "../components/MapView";
 
 const C = {
-  bg:"#0A0A0F",surface:"#13131A",card:"#1C1C26",border:"#2A2A38",
-  accent:"#FF5C1A",green:"#22C55E",yellow:"#FBBF24",red:"#EF4444",
-  blue:"#3B82F6",text:"#F0F0F5",textMid:"#9898AA",textDim:"#55556A",white:"#FFFFFF",
+  bg:"#070710",surface:"#0E0E1E",card:"#14152C",border:"#1F2048",
+  accent:"#F97316",green:"#22D06A",yellow:"#F5B731",red:"#E84040",
+  blue:"#6096F5",text:"#EDEEF8",textMid:"#8484B0",textDim:"#474768",white:"#FFFFFF",
 };
 const S = {
   screen:{ minHeight:"100vh",background:C.bg,color:C.text,fontFamily:"'Plus Jakarta Sans','Segoe UI',sans-serif" },
@@ -60,7 +60,7 @@ function AuthScreen({ auth }) {
   return (
     <div style={{ ...S.screen, display:"flex", flexDirection:"column", padding:"0" }}>
       {/* Hero */}
-      <div style={{ background:`linear-gradient(160deg, #0A0A0F 60%, #1a0a00)`, padding:"50px 24px 32px", textAlign:"center" }}>
+      <div style={{ background:`linear-gradient(160deg, #070710 55%, #1C0C02)`, padding:"50px 24px 32px", textAlign:"center" }}>
         <span style={{ fontSize:48 }}>🛵</span>
         <h1 style={{ fontSize:30,fontWeight:900,margin:"8px 0 4px",letterSpacing:-1 }}>KanoExpress</h1>
         <p style={{ color:C.textMid,fontSize:14,margin:0 }}>Fast delivery across Kano City</p>

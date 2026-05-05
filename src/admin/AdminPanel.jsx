@@ -8,9 +8,9 @@ import { adminGetAllOrders, adminGetStats } from "../lib/supabase";
 import { Spinner } from "../components/NetworkGuard";
 
 const C = {
-  bg:"#0A0A0F",surface:"#13131A",card:"#1C1C26",border:"#2A2A38",
-  accent:"#FF5C1A",green:"#22C55E",yellow:"#FBBF24",red:"#EF4444",
-  blue:"#3B82F6",text:"#F0F0F5",textMid:"#9898AA",white:"#FFFFFF",
+  bg:"#070710",surface:"#0E0E1E",card:"#14152C",border:"#1F2048",
+  accent:"#F97316",green:"#22D06A",yellow:"#F5B731",red:"#E84040",
+  blue:"#6096F5",text:"#EDEEF8",textMid:"#8484B0",white:"#FFFFFF",
 };
 const S = {
   card:{ background:C.card,borderRadius:16,border:`1px solid ${C.border}`,padding:"16px" },

@@ -9,20 +9,20 @@ import AdminPanel from "./admin/AdminPanel";
 import { NetworkGuard, ToastContainer } from "./components/NetworkGuard";
 
 const C = {
-  bg:"#0A0A0F",card:"#1C1C26",border:"#2A2A38",
-  accent:"#FF5C1A",green:"#22C55E",blue:"#3B82F6",
-  text:"#F0F0F5",textMid:"#9898AA",
+  bg:"#070710",card:"#14152C",border:"#1F2048",
+  accent:"#F97316",green:"#10B97A",blue:"#6096F5",
+  text:"#EDEEF8",textMid:"#8484B0",
 };
 const tag=(col)=>({ background:col+"22",color:col,borderRadius:8,padding:"4px 10px",fontSize:10,fontWeight:600 });
 
 const PORTALS = [
   { id:"customer", icon:"📱", title:"Customer App",  sub:"Order food, groceries & send packages", color:C.accent },
-  { id:"rider",    icon:"🏍", title:"Rider App",     sub:"Accept deliveries & track earnings",    color:C.blue },
+  { id:"rider",    icon:"🏍", title:"Rider App",     sub:"Accept deliveries & track earnings",    color:C.green },
 ];
 
 function Switcher({ onSelect }) {
   return (
-    <div style={{ minHeight:"100vh",background:C.bg,color:C.text,fontFamily:"'Plus Jakarta Sans','Segoe UI',sans-serif",display:"flex",alignItems:"center",justifyContent:"center",background:`radial-gradient(ellipse at 20% 50%, #1a0800 0%, ${C.bg} 60%)` }}>
+    <div style={{ minHeight:"100vh",background:C.bg,color:C.text,fontFamily:"'Plus Jakarta Sans','Segoe UI',sans-serif",display:"flex",alignItems:"center",justifyContent:"center",background:`radial-gradient(ellipse at 20% 50%, #140500 0%, ${C.bg} 60%)` }}>
       <div style={{ maxWidth:480,width:"100%",padding:"40px 24px",textAlign:"center" }}>
         <span style={{ fontSize:52 }}>🛵</span>
         <h1 style={{ fontSize:36,fontWeight:900,margin:"8px 0 4px",letterSpacing:-1.5 }}>KanoExpress</h1>
